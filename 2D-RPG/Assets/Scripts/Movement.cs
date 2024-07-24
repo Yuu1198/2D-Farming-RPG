@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
 
     public Animator animator;
 
-    private void Update()
+    private void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
         transform.position += direction * currentSpeed * Time.deltaTime;
     }
 
-    void AnimateMovement(Vector3 direction, bool isRunning)
+    private void AnimateMovement(Vector3 direction, bool isRunning)
     {
         if(animator != null)
         {
