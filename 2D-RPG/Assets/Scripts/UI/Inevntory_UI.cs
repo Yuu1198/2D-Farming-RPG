@@ -18,6 +18,9 @@ public class Inevntory_UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows/Hides inventory.
+    /// </summary>
     public void ToggleInventory()
     {
         if (!inventoryPanel.activeSelf)
@@ -31,6 +34,9 @@ public class Inevntory_UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Refreshes inventory slots.
+    /// </summary>
     private void Refresh()
     {
         if (slots.Count == player.inventory.slots.Count)
@@ -49,6 +55,10 @@ public class Inevntory_UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes item from inventory
+    /// </summary>
+    /// <param name="slotID">Slot of item to remove.</param>
     public void Remove(int slotID)
     {
         Item itemToDrop = GameManager.Instance.itemManager.GetItemByName(player.inventory.slots[slotID].itemName);
