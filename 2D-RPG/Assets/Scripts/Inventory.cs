@@ -21,6 +21,10 @@ public class Inventory
             maxAllowed = 99;
         }
 
+        /// <summary>
+        /// Checks if item can be added to the slot.
+        /// </summary>
+        /// <returns>True if item can be added.</returns>
         public bool CanAddItem()
         {
             if (count < maxAllowed)
@@ -31,6 +35,10 @@ public class Inventory
             return false;
         }
 
+        /// <summary>
+        /// Adds item to the slot
+        /// </summary>
+        /// <param name="item">Item to add.</param>
         public void AddItem(Item item)
         {
             this.itemName = item.data.itemName;
@@ -38,6 +46,9 @@ public class Inventory
             count++;
         }
 
+        /// <summary>
+        /// Removes item from the slot.
+        /// </summary>
         public void RemoveItem()
         {
             if (count > 0)
@@ -56,6 +67,10 @@ public class Inventory
 
     public List<Slot> slots = new List<Slot>();
 
+    /// <summary>
+    /// Constructs the inventory consisting of slots.
+    /// </summary>
+    /// <param name="numSlots">Number of slots to add.</param>
     public Inventory(int numSlots)
     {
         for (int i = 0; i < numSlots; i++)
@@ -64,6 +79,10 @@ public class Inventory
         }
     }
 
+    /// <summary>
+    /// Adds an item to the inventory.
+    /// </summary>
+    /// <param name="item">Item to add.</param>
     public void Add(Item item)
     {
         // Add item to existing items
@@ -87,6 +106,10 @@ public class Inventory
         }
     }
 
+    /// <summary>
+    /// Removes item from the inventory.
+    /// </summary>
+    /// <param name="index">Index of slot to remove item from.</param>
     public void Remove(int index)
     {
         slots[index].RemoveItem();

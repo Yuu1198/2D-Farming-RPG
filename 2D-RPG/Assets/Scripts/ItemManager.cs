@@ -10,12 +10,17 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
+        // Adds all existing items to the dictionary.
         foreach (Item item in items)
         {
             AddItem(item);
         }
     }
 
+    /// <summary>
+    /// Adds new item to the dictionary
+    /// </summary>
+    /// <param name="item">Item to add.</param>
     private void AddItem(Item item)
     {
         if (!nameToItemDict.ContainsKey(item.data.itemName))
@@ -24,6 +29,11 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets item by name from the dictionary
+    /// </summary>
+    /// <param name="key">Name of the item.</param>
+    /// <returns>Item.</returns>
     public Item GetItemByName(string key)
     {
         if (nameToItemDict.ContainsKey(key))

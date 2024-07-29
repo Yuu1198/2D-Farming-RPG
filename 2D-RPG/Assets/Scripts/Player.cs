@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Interact with tile.
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Drops item from inventory and spawns it in the world.
+    /// </summary>
+    /// <param name="item">Item to drop.</param>
     public void DropItem(Item item)
     {
         Vector3 spawnLocation = transform.position;

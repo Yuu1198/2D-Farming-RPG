@@ -12,6 +12,7 @@ public class TileManager : MonoBehaviour
 
     void Start()
     {
+        // Sets up interactable tiles
         foreach (var position in interactableMap.cellBounds.allPositionsWithin)
         {
             TileBase tile = interactableMap.GetTile(position);
@@ -23,6 +24,11 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if tile is interactable.
+    /// </summary>
+    /// <param name="position">Position of the tile.</param>
+    /// <returns>True if interactable.</returns>
     public bool IsInteractable(Vector3Int position)
     {
         TileBase tile = interactableMap.GetTile(position);
@@ -38,6 +44,10 @@ public class TileManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Plowing of interacted tile.
+    /// </summary>
+    /// <param name="position">Position of tile.</param>
     public void SetInteracted(Vector3Int position)
     {
         interactableMap.SetTile(position, interactedTile);
