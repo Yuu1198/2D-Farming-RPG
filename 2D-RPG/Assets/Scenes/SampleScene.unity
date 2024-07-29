@@ -4575,8 +4575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5162b03654ea9408142c5df4f90c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableItems:
-  - {fileID: 1461364070308819233, guid: 661ef8f8a87432643b7a309a4931439a, type: 3}
+  items:
+  - {fileID: 9043207564330646259, guid: 661ef8f8a87432643b7a309a4931439a, type: 3}
 --- !u!114 &592729324
 MonoBehaviour:
   m_ObjectHideFlags: 0
