@@ -4547,6 +4547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemManager: {fileID: 0}
+  tileManager: {fileID: 0}
 --- !u!4 &592729322
 Transform:
   m_ObjectHideFlags: 0
@@ -4590,6 +4591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableMap: {fileID: 771096303}
   hiddenInteractableTile: {fileID: 11400000, guid: 448e84683ae964046b2459543690a3ea, type: 2}
+  interactedTile: {fileID: 11400000, guid: abc66ab92dc76c04bb5452855aba56a9, type: 2}
 --- !u!1 &647527678
 GameObject:
   m_ObjectHideFlags: 0
