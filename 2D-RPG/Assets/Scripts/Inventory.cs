@@ -114,4 +114,20 @@ public class Inventory
     {
         slots[index].RemoveItem();
     }
+
+    /// <summary>
+    /// Removes multiple items.
+    /// </summary>
+    /// <param name="index">Index of slot to remove item from.</param>
+    /// <param name="numToRemove">Number of items to remove.</param>
+    public void Remove(int index, int numToRemove)
+    {
+        if (slots[index].count >= numToRemove)
+        {
+            for (int i = 0; i < numToRemove; i++)
+            {
+                Remove(index);
+            }
+        }
+    }
 }

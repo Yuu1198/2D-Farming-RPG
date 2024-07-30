@@ -39,4 +39,17 @@ public class Player : MonoBehaviour
 
         droppedItem.rb2d.AddForce(spawnOffset * 2f, ForceMode2D.Impulse);
     }
+
+    /// <summary>
+    /// Drops item from inventory and spawns it in the world.
+    /// </summary>
+    /// <param name="item">Item to drop.</param>
+    /// <param name="numToDrop">Number of items to drop.</param>
+    public void DropItem(Item item, int numToDrop)
+    {
+        for (int i = 0; i < numToDrop; i++)
+        {
+            DropItem(item);
+        }
+    }
 }
