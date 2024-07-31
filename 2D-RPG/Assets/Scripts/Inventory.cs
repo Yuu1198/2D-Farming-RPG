@@ -22,12 +22,28 @@ public class Inventory
         }
 
         /// <summary>
+        /// Is Slot empty.
+        /// </summary>
+        public bool IsEmpty
+        {
+            get
+            {
+                if (itemName == "" && count == 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Checks if item can be added to the slot.
         /// </summary>
         /// <returns>True if item can be added.</returns>
-        public bool CanAddItem()
+        public bool CanAddItem(string itemName)
         {
-            if (count < maxAllowed)
+            if (this.itemName == itemName && count < maxAllowed)
             {
                 return true;
             }
@@ -36,7 +52,7 @@ public class Inventory
         }
 
         /// <summary>
-        /// Adds item to the slot
+        /// Adds item to the slot.
         /// </summary>
         /// <param name="item">Item to add.</param>
         public void AddItem(Item item)
@@ -44,6 +60,20 @@ public class Inventory
             this.itemName = item.data.itemName;
             this.icon = item.data.icon;
             count++;
+        }
+
+        /// <summary>
+        /// Adds item to the slot.
+        /// </summary>
+        /// <param name="itemName">Name of the item.</param>
+        /// <param name="icon">Icon of the item.</param>
+        /// <param name="maxAllowed">Max number allowed.</param>
+        public void AddItem(string itemName, Sprite icon, int maxAllowed)
+        {
+            this.itemName = itemName;
+            this.icon = icon;
+            count++;
+            this.maxAllowed = maxAllowed;
         }
 
         /// <summary>
@@ -88,7 +118,7 @@ public class Inventory
         // Add item to existing items
         foreach (Slot slot in slots)
         {
-            if (slot.itemName == item.data.itemName && slot.CanAddItem())
+            if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
             {
                 slot.AddItem(item);
                 return;
@@ -127,6 +157,27 @@ public class Inventory
             for (int i = 0; i < numToRemove; i++)
             {
                 Remove(index);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Move an item to another slot.
+    /// </summary>
+    /// <param name="fromIndex">Slot item came from.</param>
+    /// <param name="toIndex">Slot item is moved to.</param>
+    /// <param name="toInventory">Inventory item is moved to.</param>
+    public void MoveSlot(int fromIndex, int toIndex, Inventory toInventory, int numToMove = 1)
+    {
+        Slot fromSlot = slots[fromIndex];
+        Slot toSlot = toInventory.slots[toIndex];
+
+        if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
+        {
+            for (int i = 0; i < numToMove; i++)
+            {
+                toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
+                fromSlot.RemoveItem(); 
             }
         }
     }
