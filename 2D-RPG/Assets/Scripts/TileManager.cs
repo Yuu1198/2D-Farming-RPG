@@ -8,7 +8,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tilemap interactableMap;
 
     [SerializeField] private Tile hiddenInteractableTile;
-    [SerializeField] private Tile interactedTile;
+    [SerializeField] private Tile plowedTile;
 
     void Start()
     {
@@ -25,31 +25,31 @@ public class TileManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if tile is interactable.
-    /// </summary>
-    /// <param name="position">Position of the tile.</param>
-    /// <returns>True if interactable.</returns>
-    public bool IsInteractable(Vector3Int position)
-    {
-        TileBase tile = interactableMap.GetTile(position);
-
-        if (tile != null)
-        {
-            if (tile.name == "Interactable")
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /// <summary>
     /// Plowing of interacted tile.
     /// </summary>
     /// <param name="position">Position of tile.</param>
     public void SetInteracted(Vector3Int position)
     {
-        interactableMap.SetTile(position, interactedTile);
+        interactableMap.SetTile(position, plowedTile);
+    }
+
+    /// <summary>
+    /// Gets name of tile by position.
+    /// </summary>
+    /// <param name="position">Position of tile.</param>
+    /// <returns></returns>
+    public string GetTileName(Vector3Int position)
+    {
+        if (interactableMap != null)
+        {
+            TileBase tile = interactableMap.GetTile(position);
+
+            if (tile != null)
+            {
+                return tile.name;
+            }
+        }
+
+        return "";
     }
 }

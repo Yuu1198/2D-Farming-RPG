@@ -20,7 +20,7 @@ public class Inevntory_UI : MonoBehaviour
 
     private void Start()
     {
-        inventory = GameManager.Instance.player.inventory.GetInventoryByName(inventoryName);
+        inventory = GameManager.Instance.player.inventoryManager.GetInventoryByName(inventoryName);
 
         SetupSlots();
         Refresh();

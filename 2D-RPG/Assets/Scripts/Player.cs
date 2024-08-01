@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public InventoryManager inventory;
+    public InventoryManager inventoryManager;
+    private TileManager tileManager;
 
     private void Awake()
     {
-        inventory = GetComponent<InventoryManager>();
+        inventoryManager = GetComponent<InventoryManager>();
+        tileManager = GameManager.Instance.tileManager;
     }
 
     private void Update()
@@ -16,11 +18,19 @@ public class Player : MonoBehaviour
         // Interact with tile.
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
-
-            if (GameManager.Instance.tileManager.IsInteractable(position))
+            if (tileManager != null)
             {
-                GameManager.Instance.tileManager.SetInteracted(position);
+                Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+
+                string tileName = tileManager.GetTileName(position);
+
+                if (!string.IsNullOrWhiteSpace(tileName))
+                {
+                    if (tileName == "Interactable" && inventoryManager.toolbar.selectedSlot.itemName == "Hoe")
+                    {
+                        tileManager.SetInteracted(position);
+                    }
+                }
             }
         }
     }

@@ -96,6 +96,7 @@ public class Inventory
     }
 
     public List<Slot> slots = new List<Slot>();
+    public Slot selectedSlot = null;
 
     /// <summary>
     /// Constructs the inventory consisting of slots.
@@ -179,6 +180,18 @@ public class Inventory
                 toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
                 fromSlot.RemoveItem(); 
             }
+        }
+    }
+
+    /// <summary>
+    /// Selects a slot.
+    /// </summary>
+    /// <param name="index">Index of slot to select.</param>
+    public void SelectSlot(int index)
+    {
+        if (slots != null && slots.Count > 0)
+        {
+            selectedSlot = slots[index];
         }
     }
 }

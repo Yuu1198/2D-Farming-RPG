@@ -20,7 +20,16 @@ public class Toolbar_UI : MonoBehaviour
     }
 
     /// <summary>
-    /// Selects slot based on index
+    /// Selects slot.
+    /// </summary>
+    /// <param name="slot">Slot to select.</param>
+    public void SelectSlot(Slot_UI slot)
+    {
+        SelectSlot(slot.slotID);
+    }
+
+    /// <summary>
+    /// Selects slot based on index.
     /// </summary>
     /// <param name="index">Index of slot to select.</param>
     public void SelectSlot(int index)
@@ -34,6 +43,8 @@ public class Toolbar_UI : MonoBehaviour
 
             selectedSlot = toolbarSlots[index];
             selectedSlot.SetHighlight(true);
+
+            GameManager.Instance.player.inventoryManager.toolbar.SelectSlot(index);
         }
     }
 
